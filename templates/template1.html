@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-flex">
+        <div class="row">
+            <div class="col-xs-12 col-xs-offset-0 col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading solid-border">
+                        {% include "nav.html" %}
+                    </div>
+
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <div class="solid-border">
+                            {% for message in messages %}
+                                <div class="flasher">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+
+                    {% block add_item %}
+                    {% endblock %}
+
+                    {% block list_items %}
+                    {% endblock %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "form_layout.html" %}
+
+{% block title %}
+    Delete ISP
+{% endblock %}
+
+{% block heading %}
+    Delete "{{ isp.name }}"
+{% endblock %}
+
+{% block form %}
+    <form method="post" action="{{ url_for('delete_isp', isp_id=isp.id) }}">
+        <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+        <div class="buttons">
+            <button class="btn btn-default" name="choice" value="delete"> Delete </button>
+            <button class="btn btn-default" name="choice" value="cancel"> Cancel </button>
+        </div>
+    </form>
+{% endblock %}

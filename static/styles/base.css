@@ -1,0 +1,44 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body , .container-flex, .row{
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+    margin-top: 4vh;
+}
+
+.solid-border {
+    border: solid #337ab7;
+    /* top | right | bottom | left */
+    border-width: 0 0 1px 0;
+    padding: 1vh 2vw 1vh 2vw;
+}
+
+.flasher {
+    color: #33b77a;
+}
+
+.login {
+    padding: 15%;
+}
+
+@media (max-width: 899px) {
+    .login {
+        padding: 15%;
+    }
+}
+
+@media (min-width: 900px) {
+    .login {
+        padding: 20%;
+    }
+}

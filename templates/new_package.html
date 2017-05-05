@@ -1,0 +1,37 @@
+{% extends "form_layout.html" %}
+
+{% block title %}
+    Add New Package
+{% endblock %}
+
+{% block heading %}
+    Add New Package to {{ isp.name }}
+{% endblock %}
+
+{% block form %}
+    <form method="post" action="{{ url_for('new_package', isp_id=isp.id) }}">
+        <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+        <div class="input-fields">
+            <label>
+                <span class="caption">Name:</span>
+                <input type="text" name="name">
+            </label>
+            <label>
+                <span class="caption">Bandwidth/Mbps:</span>
+                <input type="number" name="bandwidth">
+            </label>
+            <label>
+                <span class="caption">Cap/GB:</span>
+                <input type="number" name="cap">
+            </label>
+            <label>
+                <span class="caption">Price/$:</span>
+                <input type="number" name="price">
+            </label>
+            <div class="buttons">
+                <button class="btn btn-default" name="choice" value="create"> Create </button>
+                <button class="btn btn-default" name="choice" value="cancel"> Cancel </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

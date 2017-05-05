@@ -1,0 +1,58 @@
+{% extends "template1.html" %}
+
+{% block heading %}
+    {{ isp.name }} - Packages
+{% endblock %}
+
+{% block add_item %}
+    {# Only the creater of an ISP should be able to add new packages to it #}
+    {% if session.user_id == isp.user_id %}
+        <div class="add-item solid-border">
+            <a href="{{ url_for('new_package', isp_id=isp.id) }}">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Add New Package
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block list_items %}
+    {% for package in packages %}
+        <div class="isp solid-border">
+            <h3>
+                Name: {{ package.name }}
+            </h3>
+            <div>
+                Bandwith: {{ package.bandwidth }} Mbps
+            </div>
+            <div>
+                Cap: {{ package.cap }} GB
+            </div>
+            <div>
+                Price: ${{ package.price }}
+            </div>
+            <ul>
+                {% if session.user_id == isp.user_id %}
+                    <li>
+                        <a href="{{ url_for('edit_package', isp_id=isp.id, package_id=package.id) }}" >
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            Edit Package
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('delete_package', isp_id=isp.id, package_id=package.id) }}" >
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            Delete Package
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{{ url_for('packages_json', isp_id=isp.id, package_id=package.id) }}" >
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                        View Package JSON
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

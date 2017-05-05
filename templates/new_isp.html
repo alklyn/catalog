@@ -1,0 +1,15 @@
+{% extends "form_layout.html" %}
+
+{% block form %}
+    <form method="post" action="{{ url_for('new_isp') }}">
+        <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+        <label>
+            Name:
+            <input type="text" name="name">
+        </label>
+        <div class="buttons">
+            <button class="btn btn-default" name="choice" value="create"> Create </button>
+            <button class="btn btn-default" name="choice" value="cancel"> Cancel </button>
+        </div>
+    </form>
+{% endblock %}

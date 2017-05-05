@@ -1,0 +1,25 @@
+.input-fields {
+    display: block;
+}
+
+form {
+    width: 100%;
+}
+
+label {
+    /* top | right | bottom | left */
+    padding: 1vw 2vw;
+    width: inherit;
+}
+
+.buttons {
+    margin: 2vh 0 4vh 4vw;
+}
+
+button + button {
+    margin-left: 4vh;
+}
+
+.field-label {
+    margin-right: 1vw;
+}

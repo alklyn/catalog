@@ -1,0 +1,35 @@
+{% extends "form_layout.html" %}
+
+{% block title %}
+    Edit Package
+{% endblock %}
+
+{% block heading %}
+    Edit "{{ package.name }}"
+{% endblock %}
+
+{% block form %}
+    <form method="post" action="{{ url_for('edit_package', isp_id=isp.id, package_id=package.id) }}">
+        <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+        <label>
+            <span class="field-label">Name:</span>
+            <input type="text" name="name" value="{{ package.name }}">
+        </label>
+        <label>
+            <span class="field-label">Bandwidth/Mbps:</span>
+            <input type="number" name="bandwidth" value="{{ package.bandwidth }}">
+        </label>
+        <label>
+            <span class="field-label">Cap/GB:</span>
+            <input type="number" name="cap" value="{{ package.cap }}">
+        </label>
+        <label>
+            <span class="field-label">Price/$:</span>
+            <input type="number" name="price" value="{{ package.price }}">
+        </label>
+        <div class="buttons">
+            <button class="btn btn-default" name="choice" value="edit"> Edit </button>
+            <button class="btn btn-default" name="choice" value="cancel"> Cancel </button>
+        </div>
+    </form>
+{% endblock %}

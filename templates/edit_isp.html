@@ -1,0 +1,23 @@
+{% extends "form_layout.html" %}
+
+{% block title %}
+    Edit ISP
+{% endblock %}
+
+{% block heading %}
+    Edit {{ isp.name }}
+{% endblock %}
+
+{% block form %}
+    <form method="post" action="{{ url_for('edit_isp', isp_id=isp.id) }}">
+        <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+        <label>
+            Name:
+            <input type="text" name="name" value="{{ isp.name }}">
+        </label>
+        <div class="buttons">
+            <button class="btn btn-default" name="choice" value="edit"> Edit </button>
+            <button class="btn btn-default" name="choice" value="cancel"> Cancel </button>
+        </div>
+    </form>
+{% endblock %}
