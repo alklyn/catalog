@@ -28,10 +28,10 @@ DBSession = sessionmaker(bind=engine)
 db_session = DBSession()
 
 app = Flask(__name__)
-
-CLIENT_ID = json.loads(
-    open(os.path.dirname(os.path.realpath(__file__)) + '/client_secrets.json', 'r')\
-        .read())['web']['client_id']
+CLIENT_SECRETS_PATH = os.path.dirname(os.path.realpath(__file__)) + \
+    '/client_secrets.json'
+CLIENT_ID = \
+    json.loads(open(CLIENT_SECRETS_PATH, 'r').read())['web']['client_id']
 APPLICATION_NAME = "ISP List"
 
 
@@ -109,8 +109,7 @@ def gconnect():
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets(
-            '/vagrant/catalog/client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets(CLIENT_SECRETS_PATH, scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
