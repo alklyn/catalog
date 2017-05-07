@@ -2,6 +2,8 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+from config import DB_URI
+
 
 Base = declarative_base()
 
@@ -60,6 +62,6 @@ class Package(Base):
         }
         return data
 
-# The string form of the URL is dialect[+driver]://user:password@host/dbname
-engine = create_engine('postgresql://catalogger:gIrHaUcRe3@localhost/isp')
+
+engine = create_engine(DB_URI)
 Base.metadata.create_all(engine)

@@ -18,8 +18,10 @@ from sqlalchemy.orm.exc import NoResultFound
 from functools import wraps
 import ast
 from database_setup import Base, ISP, Package, User
+from config import DB_URI
 
-engine = create_engine("postgresql://catalogger:gIrHaUcRe3@localhost/isp")
+
+engine = create_engine(DB_URI)
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 db_session = DBSession()
