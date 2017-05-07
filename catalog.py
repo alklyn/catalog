@@ -17,6 +17,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 from functools import wraps
 import ast
+import os
 from database_setup import Base, ISP, Package, User
 from config import DB_URI
 
@@ -29,7 +30,7 @@ db_session = DBSession()
 app = Flask(__name__)
 
 CLIENT_ID = json.loads(
-    open('/vagrant/catalog/client_secrets.json', 'r')\
+    open(os.path.dirname(os.path.realpath(__file__)) + '/client_secrets.json', 'r')\
         .read())['web']['client_id']
 APPLICATION_NAME = "ISP List"
 
