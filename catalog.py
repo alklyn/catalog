@@ -28,6 +28,9 @@ DBSession = sessionmaker(bind=engine)
 db_session = DBSession()
 
 app = Flask(__name__)
+app.secret_key = "Ut0ndr1agr14*$hi7mh@7ayAk0*"
+app.debug = True
+
 CLIENT_SECRETS_PATH = os.path.dirname(os.path.realpath(__file__)) + \
     '/client_secrets.json'
 CLIENT_ID = \
